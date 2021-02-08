@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:contentDescription="Logo"
+        android:src="@drawable/gedbook" />
+
+    <Button
+        android:id="@+id/btn_tambah"
+        style="@style/ButtonLogin"
+        android:text="Tambah Data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598"
+        tools:layout_editor_absoluteX="106dp" />
+
+    <Button
+        android:id="@+id/btn_show"
+        style="@style/ButtonLogin"
+        android:text="Show All"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598"
+        tools:layout_editor_absoluteX="106dp" />
+</LinearLayout>

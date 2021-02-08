@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InputBukuActivity"
+    android:gravity="center"
+    style="@style/Position">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tambah Data Buku"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        />
+    <EditText
+        style="@style/edit_text"
+        android:id="@+id/input_id"
+        android:hint="ID Buku"/>
+    <EditText
+        style="@style/edit_text"
+        android:id="@+id/input_judul"
+        android:hint="Judul"
+        android:drawableLeft="@drawable/ic_baseline_book_24"/>
+    <EditText
+        style="@style/edit_text"
+        android:id="@+id/input_pengarang"
+        android:hint="Pengarang"
+        android:drawableLeft="@drawable/ic_baseline_people_alt_24"/>
+    <EditText
+        style="@style/edit_text"
+        android:id="@+id/input_tahun_terbit"
+        android:hint="Tahun Terbit"
+        android:drawableLeft="@drawable/ic_baseline_calendar_today_24"/>
+    <EditText
+        style="@style/edit_text"
+        android:id="@+id/input_penerbit"
+        android:hint="Penerbit"
+        android:drawableLeft="@drawable/ic_baseline_business_24"/>
+    <EditText
+        style="@style/edit_text"
+        android:id="@+id/input_harga"
+        android:hint="Harga"
+        android:drawableLeft="@drawable/ic_baseline_attach_money_24"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            style="@style/btn_Style"
+            android:id="@+id/btn_submit"
+            android:text="Submit"
+            android:onClick="addData"
+            android:background="@color/colorPrimaryDark"/>
+
+        <Button
+            android:id="@+id/btn_show"
+            style="@style/btn_Style"
+            android:text="Show All"
+            android:onClick="showAll"
+            android:background="@color/colorPrimaryDark"/>
+    </LinearLayout>
+</LinearLayout>
+
+
+

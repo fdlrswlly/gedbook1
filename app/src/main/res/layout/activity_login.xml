@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    style="@style/Position">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/gedbook"
+        android:contentDescription="Logo Login"/>
+<EditText
+    android:id="@+id/login_username"
+    android:drawableLeft="@drawable/ic_baseline_email_24"
+    android:hint="username here"
+    android:inputType="text"
+    style="@style/edit_text"/>
+
+    <EditText
+        android:id="@+id/password_login"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:hint="password here"
+        android:inputType="textPassword"
+        style="@style/edit_text"/>
+<Button
+    android:id="@+id/btn_login"
+    android:text="Login"
+    style="@style/ButtonLogin"/>
+<Button
+    android:id="@+id/btnregister"
+    style="@style/ButtonLogin"
+    android:text="Register"/>
+
+</LinearLayout>
