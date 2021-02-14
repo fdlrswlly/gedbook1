@@ -1,5 +1,6 @@
 package com.fadhlyaulia.gedbook
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -40,4 +41,8 @@ class InputBukuActivity : AppCompatActivity() {
         inputharga.setText("")
 
     }
+    fun showAll(v:View){
+        var pindah = Intent(this, RvDbActivity::class.java)
+        startActivity(pindah)
+}
 }

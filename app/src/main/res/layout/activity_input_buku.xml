@@ -21,7 +21,8 @@
     <EditText
         style="@style/edit_text"
         android:id="@+id/input_id"
-        android:hint="ID Buku"/>
+        android:hint="ID Buku"
+        android:drawableLeft="@drawable/ic_baseline_filter_1_24"/>
     <EditText
         style="@style/edit_text"
         android:id="@+id/input_judul"

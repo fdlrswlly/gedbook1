@@ -15,7 +15,7 @@ class DBHelperBuku(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, n
             "CREATE TABLE " + DBInfo.BookInput.TABLE_NAME + " (" + DBInfo.BookInput.COL_ID +
                     " VARCHAR(200) PRIMARY KEY, " + DBInfo.BookInput.COL_JUDUL + " TEXT, " +
                     DBInfo.BookInput.COL_PENGARANG + " VARCHAR(200), " + DBInfo.BookInput.COL_TAHUN_TERBIT +
-                    " DATE, "+DBInfo.BookInput.COL_PENERBIT + "TEXT, "+DBInfo.BookInput.COL_HARGA+"VARCHAR(200))"
+                    " VARCHAR(200), " + DBInfo.BookInput.COL_PENERBIT + " TEXT, " + DBInfo.BookInput.COL_HARGA + " VARCHAR(200))"
         private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + DBInfo.BookInput.TABLE_NAME
     }
 
@@ -28,7 +28,14 @@ class DBHelperBuku(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, n
     }
 
     @Throws(SQLiteConstraintException::class)
-    fun insertData(idin: String, judulin: String, pengarangin: String, tahunterbitin: String, penerbitin: String, hargain: String): Boolean {
+    fun insertData(
+        idin: String,
+        judulin: String,
+        pengarangin: String,
+        tahunterbitin: String,
+        penerbitin: String,
+        hargain: String
+    ): Boolean {
         val db = writableDatabase
         val namatablet = DBInfo.BookInput.TABLE_NAME
         val idt = DBInfo.BookInput.COL_ID
@@ -37,8 +44,9 @@ class DBHelperBuku(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         val tahunterbitt = DBInfo.BookInput.COL_TAHUN_TERBIT
         val penerbit = DBInfo.BookInput.COL_PENERBIT
         val hargat = DBInfo.BookInput.COL_HARGA
-        var sql = "INSERT INTO "+ namatablet +"("+idt+", "+judult+", "+pengarangt+", "+tahunterbitt+", "+penerbit+","+hargat+") " +
-                "VALUES('"+idin+"', '"+judulin+"', '"+pengarangin+"', '"+tahunterbitin+"','"+penerbitin+"','"+hargain+"')"
+        var sql =
+            "INSERT INTO " + namatablet + "(" + idt + ", " + judult + ", " + pengarangt + ", " + tahunterbitt + ", " + penerbit + "," + hargat + ") " +
+                    "VALUES('" + idin + "', '" + judulin + "', '" + pengarangin + "', '" + tahunterbitin + "','" + penerbitin + "','" + hargain + "')"
         db.execSQL(sql)
         return true
     }
@@ -50,7 +58,7 @@ class DBHelperBuku(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         val db = writableDatabase
         var cursor: Cursor? = null
         try {
-            cursor = db.rawQuery("SELECT * FROM "+DBInfo.BookInput.TABLE_NAME, null)
+            cursor = db.rawQuery("SELECT * FROM " + DBInfo.BookInput.TABLE_NAME, null)
         } catch (e: SQLException) {
             db.execSQL(SQL_CREATE_ENTRIES)
             return ArrayList()
@@ -62,41 +70,46 @@ class DBHelperBuku(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         var tahunterbitt: String
         var penerbit: String
         var hargat: String
-        if (cursor!!.moveToFirst()){
-            while (cursor.isAfterLast==false){
+        if (cursor!!.moveToFirst()) {
+            while (cursor.isAfterLast == false) {
                 idt = cursor.getString(cursor.getColumnIndex(DBInfo.BookInput.COL_ID))
                 judult = cursor.getString(cursor.getColumnIndex(DBInfo.BookInput.COL_JUDUL))
                 pengarangt = cursor.getString(cursor.getColumnIndex(DBInfo.BookInput.COL_PENGARANG))
-                tahunterbitt = cursor.getString(cursor.getColumnIndex(DBInfo.BookInput.COL_TAHUN_TERBIT))
+                tahunterbitt =
+                    cursor.getString(cursor.getColumnIndex(DBInfo.BookInput.COL_TAHUN_TERBIT))
                 penerbit = cursor.getString(cursor.getColumnIndex(DBInfo.BookInput.COL_PENERBIT))
                 hargat = cursor.getString(cursor.getColumnIndex(DBInfo.BookInput.COL_HARGA))
 
-                books.add(DataModelBuku(idt,judult,pengarangt,tahunterbitt,penerbit,hargat))
+                books.add(DataModelBuku(idt, judult, pengarangt, tahunterbitt, penerbit, hargat))
                 cursor.moveToNext()
             }
         }
         return books
     }
-    /*fun deleteData(emailin: String){
+
+    fun deleteData(idin: String){
         val db = writableDatabase
-        val namatablet = DBInfo.UserInput.TABLE_NAME
-        val emailt = DBInfo.UserInput.COL_EMAIL
-        val sql = "DELETE FROM " +namatablet+ " WHERE "+emailt+"='"+emailin+"'"
-        db.execSQL(sql)
-    }*/
-    /*fun updateData(emailin: String, passin: String, usernamein: String, fullnamein: String){
-        val db = writableDatabase
-        val namatablet = DBInfo.UserInput.TABLE_NAME
-        val emailt = DBInfo.UserInput.COL_EMAIL
-        val passt = DBInfo.UserInput.COL_PASS
-        val usernamet = DBInfo.UserInput.COL_USERNAME
-        val fullnamet = DBInfo.UserInput.COL_FULLNAME
-        var sql = "UPDATE "+ namatablet + " SET "+
-                usernamet+"='"+usernamein+"', "+fullnamet+"='"+fullnamein+"', "+passt+"='"+passin+"' "+
-                "WHERE "+emailt+"='"+emailin+"'"
+        val namatablet = DBInfo.BookInput.TABLE_NAME
+        val idt = DBInfo.BookInput.COL_ID
+        val sql = "DELETE FROM " +namatablet+ " WHERE "+idt+"='"+idin+"'"
         db.execSQL(sql)
     }
-*/
+    fun updateData(idin: String, judulin: String, pengarangin: String, tahunterbitin: String, penerbitin: String, hargain: String) {
+        val db = writableDatabase
+        val namatablet = DBInfo.BookInput.TABLE_NAME
+        val idt = DBInfo.BookInput.COL_ID
+        val judult = DBInfo.BookInput.COL_JUDUL
+        val pengarangt = DBInfo.BookInput.COL_PENGARANG
+        val tahunterbitt = DBInfo.BookInput.COL_TAHUN_TERBIT
+        val penerbit = DBInfo.BookInput.COL_PENERBIT
+        val hargat = DBInfo.BookInput.COL_HARGA
+        var sql = "UPDATE " + namatablet + " SET " +
+                judult + "='" + judulin + "', " + pengarangt + "= '" + pengarangin + "', " +
+                tahunterbitt + "= '" + tahunterbitin + "', " + penerbit + "= '" + penerbitin + "', " + hargat + "='" + hargain + "' " +
+                "WHERE " + idt + "= '" + idin + "'"
+        db.execSQL(sql)
+    }
 
 }
+
 

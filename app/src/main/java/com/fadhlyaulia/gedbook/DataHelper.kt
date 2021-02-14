@@ -33,7 +33,8 @@ class DataHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, nul
         val fullnamet = DataInfo.UserTable.COL_FULLNAME
         val jenkalt = DataInfo.UserTable.COL_JENKAL
         val alamatt = DataInfo.UserTable.COL_ALAMAT
-        var sql = "INSERT INTO " + namatable + " (" + emailt + ", " + passt + ", " + fullnamet + ", " + jenkalt + ", " + alamatt + ") VALUES('" + emailin + "', '" + passin + "', '" + fullnamein + "', '" + jenkalin + "', '" + alamatin + "')"
+        var sql = "INSERT INTO " + namatable + "( " + emailt + ", " + passt + ", " + fullnamet + ", " + jenkalt + ", " + alamatt + ")" +
+                        " VALUES ('" + emailin + "', '" + passin + "', '" + fullnamein + "', '" + jenkalin + "', '" + alamatin + "')"
         db.execSQL(sql)
     }
     fun cekUser(emailin: String): String {

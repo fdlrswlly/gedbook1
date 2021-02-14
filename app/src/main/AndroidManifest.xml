@@ -19,9 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".RvDbActivity"/>
-        <activity android:name=".InputBukuActivity"/>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".InputBukuActivity" />
+        <activity android:name=".RvDbActivity" />
+        <activity android:name=".UpdateBukuActivity" />
+        <activity android:name=".MainActivity" ></activity>
     </application>
 
 </manifest>
