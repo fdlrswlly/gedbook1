@@ -104,8 +104,8 @@ class DBHelperBuku(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         val penerbit = DBInfo.BookInput.COL_PENERBIT
         val hargat = DBInfo.BookInput.COL_HARGA
         var sql = "UPDATE " + namatablet + " SET " +
-                judult + "='" + judulin + "', " + pengarangt + "= '" + pengarangin + "', " +
-                tahunterbitt + "= '" + tahunterbitin + "', " + penerbit + "= '" + penerbitin + "', " + hargat + "='" + hargain + "' " +
+                judult + "='" + judulin + "', " + pengarangt + "='" + pengarangin + "', " +
+                tahunterbitt + "='" + tahunterbitin + "', " + penerbit + "='" + penerbitin + "', " + hargat + "='" + hargain + "' " +
                 "WHERE " + idt + "= '" + idin + "'"
         db.execSQL(sql)
     }
